@@ -1,0 +1,25 @@
+# Core Framework
+fastapi
+uvicorn
+
+# Database
+sqlalchemy
+
+# Data Processing
+pandas
+
+# AI/LLM
+groq
+
+# Validation
+pydantic
+pydantic-settings
+
+# Utilities
+python-dotenv
+
+# HTTP Client
+httpx
+
+#production
+gunicorn
