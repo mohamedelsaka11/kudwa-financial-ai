@@ -1,10 +1,11 @@
-
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.database import init_db
+from app.database import init_db, SessionLocal
 from app.api.routes import router
+from app.models import FinancialPeriod
+from app.services.data_processor import DataProcessor
 
 
 @asynccontextmanager
@@ -13,14 +14,30 @@ async def lifespan(app: FastAPI):
     print("\n" + "=" * 50)
     print("Kudwa Financial AI Starting...")
     print("=" * 50)
+    
     init_db()
+    
+    db = SessionLocal()
+    try:
+        count = db.query(FinancialPeriod).count()
+        if count == 0:
+            print("Database is empty. Loading data...")
+            processor = DataProcessor()
+            result = processor.process_all()
+            print(f"Data loaded: {result}")
+        else:
+            print(f"Database already has {count} records")
+    except Exception as e:
+        print(f"Error checking/loading data: {e}")
+    finally:
+        db.close()
+    
     print("Ready to serve requests!")
     print("Docs: http://localhost:8000/docs")
     print("=" * 50 + "\n")
     
     yield  
     
-   
     print("\n" + "=" * 50)
     print("Kudwa Financial AI Shutting down...")
     print("=" * 50 + "\n")
