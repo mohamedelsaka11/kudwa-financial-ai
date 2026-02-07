@@ -15,22 +15,20 @@ from datetime import datetime
 class AIService:
    
     def __init__(self):
-         
-        api_key = os.environ.get("GROQ_API_KEY") 
-        
-        print(f"DEBUG: API Key exists: {api_key is not None}")
-        print(f"DEBUG: API Key length: {len(api_key) if api_key else 0}")
-        
-        if not api_key:
-            raise ValueError("GROQ_API_KEY is not set!")
-        
-        self.client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-        self.model = "llama-3.3-70b-versatile"
-        
-        self.conversation_history = []
-        self.max_history = 10
-        
-        self.db_schema = """
+     api_key = os.environ.get("GROQ_API_KEY") 
+    
+     print(f"DEBUG: API Key exists: {api_key is not None}")
+     print(f"DEBUG: API Key length: {len(api_key) if api_key else 0}")
+    
+     if not api_key:
+        raise ValueError("GROQ_API_KEY is not set!")
+    
+     self.client = Groq(api_key=api_key)  
+     self.model = "llama-3.3-70b-versatile"
+    
+     self.conversation_history = []
+     self.max_history = 10
+     self.db_schema = """
         Table: financial_periods
         Columns:
         - id: INTEGER (Primary Key)
