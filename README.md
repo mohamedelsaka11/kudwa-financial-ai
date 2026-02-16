@@ -250,12 +250,6 @@ kudwa-financial-ai/
 
 ---
 
-## 📝 License
-
-This project is created as part of Kudwa AI Engineer assessment.
-
----
-
 ## 👤 Author
 
 Moamed Elsaka
