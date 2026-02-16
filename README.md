@@ -64,13 +64,13 @@ Kudwa Financial AI is a backend system that integrates diverse financial data so
 - Groq API Key from https://console.groq.com/keys
 
 ### Step 1: Download or Clone the Repository
-
+```text
 Download the project files and navigate to the project directory:
 
 cd kudwa-financial-ai
-
+```
 ### Step 2: Create Virtual Environment
-
+```text
 python -m venv venv
 
 Windows:
@@ -78,13 +78,13 @@ venv\Scripts\activate
 
 macOS/Linux:
 source venv/bin/activate
-
+```
 ### Step 3: Install Dependencies
-
+```text
 pip install -r requirements.txt
-
+```
 ### Step 4: Configure Environment
-
+```text
 Create .env file in the root directory with:
 
 GROQ_API_KEY=your_api_key_here
@@ -93,20 +93,20 @@ DATABASE_URL=sqlite:///./kudwa_financial.db
 
 APP_NAME=Kudwa Financial AI
 DEBUG=True
-
+```
 ### Step 5: Load Data
-
+```text
 python -m app.services.data_processor
-
+```
 ### Step 6: Run the Server
-
+```text
 uvicorn app.main:app --reload
-
+```
 ### Step 7: Access the API
-
+```text
 - API Docs: http://localhost:8000/docs
 - Health Check: http://localhost:8000/api/v1/health
-
+```
 ---
 
 ## 📖 Usage
